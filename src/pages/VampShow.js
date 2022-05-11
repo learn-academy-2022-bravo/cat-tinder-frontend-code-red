@@ -1,10 +1,19 @@
 import React, { Component } from 'react'
 
 class VampShow extends Component {
-  render() {
+  render () {
+    let { vamp } = this.props
     return(
       <>
-        <h2>VampShow</h2>
+        <h2>Vamp Show</h2>
+        { vamp && 
+          <div>
+            <p>{vamp.name}</p>
+            <p>{vamp.age}</p>
+            <p>{vamp.enjoys}</p>
+            <img src={vamp.image} width="200px"/>
+          </div>
+          }
       </>
     )
   }
