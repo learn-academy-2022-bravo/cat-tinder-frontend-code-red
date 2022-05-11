@@ -4,7 +4,9 @@ class Home extends Component {
   render() {
     return(
       <>
-        <h2>Home</h2>
+        <h2 className="vampire">Welcome to Vampire Tinder!</h2>
+        <h3>Find Your Match!</h3>
+        <img src="https://render.fineartamerica.com/images/rendered/default/print/5/8/break/images/artworkimages/medium/1/dracula-mark-spears.jpg" />
       </>
     )
   }
