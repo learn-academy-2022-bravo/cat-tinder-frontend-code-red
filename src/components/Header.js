@@ -6,7 +6,6 @@ class Header extends Component {
   render() {
     return(
       <>
-            {/* <link href="https://allfont.net/allfont.css?fonts=bloody" rel="stylesheet" type="text/css" /> */}
             <Nav className="header-nav">
             <NavItem>
               <NavLink to="/">
