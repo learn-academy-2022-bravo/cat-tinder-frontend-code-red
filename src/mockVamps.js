@@ -4,7 +4,7 @@ let vamps = [
       name: "Edward Cullen",
       age: 108,
       enjoys: "Stalking Bella and going for a stroll",
-      image: "https://images.unsplash.com/photo-15https://i.insider.com/5f3c39076c6e1f001d604888?width=879&format=jpeg"
+      image: "https://i.insider.com/61952ab1a2e68800198aa8b1?width=600&format=jpeg&auto=webp"
     },
     {
       id: 2,
