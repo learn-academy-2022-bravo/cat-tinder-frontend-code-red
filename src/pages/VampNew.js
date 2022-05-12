@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
+
 class VampNew extends Component {
   constructor(props) {
     super(props)

@@ -27,6 +27,10 @@ class App extends Component {
   createVamp = (newlyCreatedVamp) => {
     console.log(newlyCreatedVamp)
   }
+  updateVamp = (vamp, id) => {
+    console.log("vamp:", vamp)
+    console.log("id:", id)
+  }
 
   render() {
   return (
@@ -34,7 +38,15 @@ class App extends Component {
     <Header />
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/vampedit" component={VampEdit} />
+      <Route 
+        path="/vampedit/:id"  
+        render={(props) => {
+          let id = +props.match.params.id
+          let vamp = this.state.vamps.find(vamp => vamp.id === id)
+          console.log(vamp)
+          return <VampEdit updateVamp={this.updateVamp} vamp={vamp} />
+        }}
+      />
       <Route 
         path="/vampindex"  
         render={(props) => <VampIndex vamps={this.state.vamps} />} 

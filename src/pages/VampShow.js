@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Button } from 'reactstrap'
+
+
 
 class VampShow extends Component {
   render () {
@@ -14,6 +18,9 @@ class VampShow extends Component {
             <img src={vamp.image} width="200px"/>
           </div>
           }
+          <NavLink to={`/vampedit/${this.props.vamp.id}`}>
+            <Button>Edit Vampire Profile</Button>
+          </NavLink>
       </>
     )
   }
