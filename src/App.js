@@ -39,10 +39,11 @@ class App extends Component {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route 
-        path="/vampedit"  
+        path="/vampedit/:id"  
         render={(props) => {
           let id = +props.match.params.id
           let vamp = this.state.vamps.find(vamp => vamp.id === id)
+          console.log(vamp)
           return <VampEdit updateVamp={this.updateVamp} vamp={vamp} />
         }}
       />

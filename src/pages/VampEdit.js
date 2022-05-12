@@ -22,9 +22,10 @@ class VampEdit extends Component {
     console.log(this.state.newVamp)
   }
   handleSubmit = () => {
+    console.log(this.props.vamp)
     this.props.updateVamp(this.state.newVamp, this.props.vamp.id)
     this.setState({submitted: true})
-    console.log(this.state.updateVamp)
+    console.log(this.state.newVamp)
   }
 
   render() {
