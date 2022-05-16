@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Button } from 'reactstrap'
 
-
-
 class VampShow extends Component {
   render () {
     let { vamp } = this.props
@@ -20,6 +18,11 @@ class VampShow extends Component {
           }
           <NavLink to={`/vampedit/${this.props.vamp.id}`}>
             <Button>Edit Vampire Profile</Button>
+          </NavLink>
+          <NavLink to="/vampindex">
+            <Button onClick={() => this.props.deleteVamp(this.props.vamp.id)} name= "submit">
+              Delete Vampire Profile
+            </Button>
           </NavLink>
       </>
     )
