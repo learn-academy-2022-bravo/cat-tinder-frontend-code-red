@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './App.css'
-import vamps from './mockVamps.js'
 import {
   BrowserRouter as Router,
   Route,
@@ -21,15 +20,57 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      vamps: vamps
+      vamps: []
     }
   }
-  createVamp = (newlyCreatedVamp) => {
-    console.log(newlyCreatedVamp)
+
+  componentDidMount(){
+    this.readVampire()
   }
+  
+  readVampire = () => {
+    fetch("http://localhost:3000/vampires")
+    .then(response => response.json())
+    .then(vampiresArray => this.setState({vamps: vampiresArray}))
+    .catch(errors => console.log("Vampire read errors:", errors))
+  }
+
+  createVamp = (newlyCreatedVamp) => {
+    fetch("http://localhost:3000/vampires", {
+      body: JSON.stringify(newlyCreatedVamp),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => response.json())
+    .then(() => this.readVampire())
+    .catch(errors => console.log("Vampire create errors:", errors))
+  }
+
   updateVamp = (vamp, id) => {
-    console.log("vamp:", vamp)
-    console.log("id:", id)
+    fetch(`http://localhost:3000/vampires/${id}`, {
+      body: JSON.stringify(vamp),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+    .then(response => response.json())
+    .then(() => this.readVampire())
+    .catch(errors => console.log("Vampire update errors:", errors))
+  }
+
+  deleteVamp = (id) => {
+    fetch(`http://localhost:3000/vampires/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => response.json())
+    .then(() => this.readVampire())
+    .catch(errors => console.log("delete errors:", errors))
   }
 
   render() {
@@ -58,9 +99,9 @@ class App extends Component {
      />
       <Route path="/vampshow/:id"  
         render={(props) => {
-          let id = +props.match.params.id
-          let vamp = this.state.vamps.find(vampObject => vampObject.id === id)
-          return <VampShow vamp={vamp}/>
+          let id = props.match.params.id
+          let vamp = this.state.vamps.find(vampObject => vampObject.id === +id)
+          return <VampShow vamp={vamp} deleteVamp={this.deleteVamp}/>
         }} 
       />
       <Route component={NotFound} />
