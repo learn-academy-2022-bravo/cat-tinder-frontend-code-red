@@ -36,6 +36,7 @@ class App extends Component {
   }
 
   createVamp = (newlyCreatedVamp) => {
+    console.log(newlyCreatedVamp)
     fetch("http://localhost:3000/vampires", {
       body: JSON.stringify(newlyCreatedVamp),
       headers: {

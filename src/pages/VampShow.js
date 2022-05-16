@@ -20,7 +20,7 @@ class VampShow extends Component {
             <Button>Edit Vampire Profile</Button>
           </NavLink>
           <NavLink to="/vampindex">
-            <Button onClick={this.props.deleteVamp} name= "submit">
+            <Button onClick={() => this.props.deleteVamp(this.props.vamp.id)} name= "submit">
               Delete Vampire Profile
             </Button>
           </NavLink>
